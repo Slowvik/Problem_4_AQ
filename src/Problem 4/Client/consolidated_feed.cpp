@@ -1,6 +1,6 @@
 /*
     > getBloombergNewsItem() and getReutersNewsItem() called in an inf loop
-    > They receive into a buffer, push it into a NewsItem struct and return one NewsItem at a time.
+    > They receive into a buffer, push it into a NewsItem queue and return one NewsItem at a time.
     > main thread compares the sequence numbers, starting with 1
     > Have the functions do the following:
         > Read every packet in the buffer and push everything into a queue (order doesn't matter)
