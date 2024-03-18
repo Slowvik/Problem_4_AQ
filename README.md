@@ -14,7 +14,8 @@ Notes on the algorithm:
 
 Compilation instructions:
 1. Compile the PTI_file_generator.cpp file on Windows using g++: g++ PTI_file_generator.cpp -o PTI_file_generator
-2. Compile the servers on windows with g++ bloomberg.cpp -lws2_32 -o bloomberg and g++ reuters.cpp -lws2_32 -o reuters
-3. Start up the servers
-4. Compile the client with g++ consolidated_feed.cpp -lws2_32 -o consolidated_feed
-5. Run the client. It prints a consolidated feed of data received from the two servers.
+2. Run the PTI_file_generator.exe to generate a PTI_file.csv containing comma-separated NewsItems.
+3. Compile the servers on windows with g++ bloomberg.cpp -lws2_32 -o bloomberg and g++ reuters.cpp -lws2_32 -o reuters
+4. Start up the servers
+5. Compile the client with g++ consolidated_feed.cpp -lws2_32 -o consolidated_feed
+6. Run the client. It prints a consolidated feed of data received from the two servers.
