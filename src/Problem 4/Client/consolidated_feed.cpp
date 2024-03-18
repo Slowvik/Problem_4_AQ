@@ -366,7 +366,7 @@ int main()
     clients::NewsItem reuters_news;
 
     int current_sequence = 0;
-    std::priority_queue<clients::NewsItem, std::vector<clients::NewsItem>, Comparator> news_queue;
+    std::priority_queue<clients::NewsItem, std::vector<clients::NewsItem>, Comparator> news_queue; //min heap to store all NewsItems
 
     while(1)
     {
@@ -382,21 +382,25 @@ int main()
             news_queue.push(reuters_news);
         }
 
-        if((bloomberg_news.sequence_number == 0) && (reuters_news.sequence_number == 0) && (news_queue.empty()))
+        if((bloomberg_news.sequence_number == 0) && (reuters_news.sequence_number == 0) && (news_queue.empty())) //No more data to print
         {
             std::cout<<"End of both Reuters and Bloomberg streams, all data printed"<<std::endl;
             break;
         }
-        else if(news_queue.top().sequence_number == current_sequence)
+        else if(!(news_queue.empty()) && (news_queue.top().sequence_number == current_sequence)) //Duplicate news present in the queue
         {
             news_queue.pop();
         }
-        else if(news_queue.top().sequence_number == current_sequence+1)
+        else if(!(news_queue.empty()) && (news_queue.top().sequence_number == current_sequence+1)) //Next news available
         {
             std::cout<<news_queue.top();
             current_sequence++;
             news_queue.pop();
         }
+        // else //We are still waiting for the next news
+        // {
+
+        // }
     }
 
     clients::closeAllAndCleanup();
